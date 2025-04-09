@@ -1,7 +1,7 @@
 import os
 import cv2
 import numpy as np
-import pickle
+import joblib
 import streamlit as st
 import pyttsx3
 from threading import Thread
@@ -63,12 +63,12 @@ def main():
     model = load_model()
     
     # File path for storing embeddings
-    embedding_file = "face_embeddings.pkl"
+    embedding_file = "face_embeddings.joblib"
     
     # Load known face embeddings
     if os.path.exists(embedding_file):
         with open(embedding_file, "rb") as f:
-            known_embeddings = pickle.load(f)
+            known_embeddings = joblib.load(f)
         st.sidebar.success("Loaded existing face embeddings.")
     else:
         st.sidebar.warning("No face embeddings found! Run face embedding generation first.")
