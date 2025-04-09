@@ -86,7 +86,7 @@ def main():
         # Open webcam
         cap = cv2.VideoCapture(0)
         
-        if not cap.isOpened():
+        if not cap.isOpened(0):
             st.error("Could not open webcam. Please check your camera connection.")
             return
         
